@@ -43,4 +43,5 @@ public class Aluno {
     public float calcularMedia() {
         return this.somarNotas() / 2;
     }
+
 }
