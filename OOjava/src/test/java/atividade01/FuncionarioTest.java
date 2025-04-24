@@ -18,13 +18,13 @@ class FuncionarioTest {
     public void deveCalcularAumento() {
         funcionario.setSalario(1000);
         funcionario.setPorcentagem(50);
-        assertEquals(500, funcionario.aumento());
+        assertEquals(500, funcionario.calcularAumento());
     }
 
     @Test
     public void deveDefinirSalarioNovo() {
         funcionario.setSalario(1000);
-        funcionario.setAumento(500);
-        assertEquals(1500, funcionario.salarioNovo());
+        funcionario.setPorcentagem(50);
+        assertEquals(1500, funcionario.calcularSalarioNovo());
     }
 }
