@@ -9,8 +9,6 @@ public class CalculadoraIMC {
     private float imc;
     private String sexo;
 
-    DecimalFormat df = new DecimalFormat("#.##"); // Define o formato com 2 casas decimais
-
     public float getPeso() {
         return peso;
     }
@@ -43,27 +41,37 @@ public class CalculadoraIMC {
         this.sexo = sexo;
     }
 
-    public String imc() {
-        this.imc = this.peso / (this.altura * this.altura);
-        String imcFormatado = df.format(this.imc);
-        return imcFormatado;
+    public float calculoImc() {
+        return this.imc = this.peso / (this.altura * this.altura);
     }
 
-    public String condicao(){
-        if (sexo.equals("F")) {
-            if (imc < 19.1) return "Abaixo do peso";
-            else if (imc < 25.8) return "Peso normal";
-            else if (imc < 27.3) return "Marginalmente acima do peso";
-            else if (imc < 32.3) return "Acima do peso ideal";
-            else return "Obeso";
-        } else if (sexo.equals("M")) {
-            if (imc < 20.7) return "Abaixo do peso";
-            else if (imc < 26.4) return "Peso normal";
-            else if (imc < 27.8) return "Marginalmente acima do peso";
-            else if (imc < 31.1) return "Acima do peso ideal";
-            else return "Obeso";
+    public String calcularImcMulher() {
+        this.imc = this.calculoImc();
+        if (this.imc < 19.1) {
+            return "Condição: Abaixo do Peso";
+        } else if (this.imc >= 19.1 && this.imc < 25.8) {
+            return "Condição: Peso Normal";
+        } else if (this.imc >= 25.8 && this.imc < 27.3) {
+            return "Condição: Marginalmente Acima do Peso";
+        } else if (this.imc >= 27.3 && this.imc < 32.3) {
+            return "Condição: Acima do Peso Ideal";
         } else {
-            return "Sexo inválido";
+            return "Condição: Obeso";
+        }
+    }
+
+    public String calcularImcHomem() {
+        this.imc = this.calculoImc();
+        if (this.imc < 20.7) {
+            return "Condição: Abaixo do Peso";
+        } else if (this.imc >= 20.7 && this.imc < 26.4) {
+            return "Condição: Peso Normal";
+        } else if (this.imc >= 26.4 && this.imc < 27.8) {
+            return "Condição: Marginalmente Acima do Peso";
+        } else if (this.imc >= 27.8 && this.imc < 31.1) {
+            return "Condição: Acima do Peso Ideal";
+        } else {
+            return "Condição: Obeso";
         }
     }
 }
