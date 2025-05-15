@@ -1,21 +1,21 @@
-public class Pessoa {
+public abstract class Pessoa {
+
     private String nome;
 
-    public Pessoa() {
-    }
-
     public Pessoa(String nome) {
-        this.nome = nome;
+        this.setNome(nome);
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
-        if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome inválido");
+        if (nome.trim().equals("")) {
+            throw new IllegalArgumentException("Nome invalido");
         }
-        this.nome = nome;
+        this.nome = nome.trim();
     }
+
+    public abstract String obterDados();
 }

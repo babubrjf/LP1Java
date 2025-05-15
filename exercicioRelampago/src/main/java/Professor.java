@@ -1,27 +1,22 @@
+package IF_OO_20251.ERS35;
+
 public class Professor extends Pessoa {
+
     private String titulacao;
 
-    public Professor(String nome, String titulacao) {
+    public Professor(String nome) {
         super(nome);
-        this.titulacao = titulacao;
-    }
-
-    public Professor() {
-
     }
 
     public String getTitulacao() {
-        return titulacao;
+        return this.titulacao;
     }
 
     public void setTitulacao(String titulacao) {
-        if (titulacao == null || titulacao.isBlank()) {
-            throw new IllegalArgumentException("Titulação inválida");
-        }
         this.titulacao = titulacao;
     }
 
-    public String retornaNomeTitulacao() {
-        return "Professor: " + getNome() + ", Titulação: " + titulacao;
+    public String obterDados() {
+        return "Nome: " + this.getNome() + " - Titulacao: " + this.titulacao;
     }
 }

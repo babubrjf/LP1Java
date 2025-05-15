@@ -1,35 +1,12 @@
+package IF_OO_20251.ERS35;
+
 public class AlunoGraduacao extends Aluno {
-    private boolean aprovado;
 
-    public AlunoGraduacao(String nome, float nota1, float nota2, float media, int matricula) {
-        super(nome, nota1, nota2, media, matricula);
+    public AlunoGraduacao(String nome) {
+        super(nome);
     }
 
-    public AlunoGraduacao(){
-
-    }
-
-    public boolean isAprovado() {
-        return aprovado;
-    }
-
-    public void setAprovado(boolean aprovado) {
-        this.aprovado = aprovado;
-    }
-
-    public void alunoAprovado(){
-        if (getMedia()>=7){
-            this.aprovado = true;
-        }
-    }
-
-    public void alunoReprovado(){
-        if (getMedia()<7){
-            this.aprovado = false;
-        }
-    }
-
-    public String retornaNomeMatriculaAprovacao() {
-        return "Aluno: " + getNome() + ", Matricula: " + getMatricula() + "Aprovado:";
+    public float obterLimiteAprovacao() {
+        return 7.0f;
     }
 }

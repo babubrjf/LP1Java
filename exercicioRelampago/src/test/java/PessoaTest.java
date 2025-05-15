@@ -1,30 +1,56 @@
-import org.junit.jupiter.api.BeforeEach;
+package IF_OO_20251.ERS35;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PessoaTest {
-    Pessoa pessoa;
 
-    @BeforeEach
-    public void setUp() {
-        pessoa = new Pessoa();
+    @Test
+    void deveRegistrarNome() {
+        Pessoa pessoa = new Professor("Ana");
+        assertEquals("Ana", pessoa.getNome());
     }
 
     @Test
-    public void devePossuirNomeValido() {
-        pessoa.setNome("Pessoa");
-        assertEquals("Pessoa", pessoa.getNome());
+    void deveRegistrarNomeTirandoEspacos() {
+        Pessoa pessoa = new Professor(" Ana ");
+        assertEquals("Ana", pessoa.getNome());
     }
 
     @Test
-    public void deveTestarNomeVazio() {
+    void deveLancarExcecaoNomeNulo() {
         try {
+            Pessoa pessoa = new Professor("Ana");
             pessoa.setNome("");
             fail();
         }
         catch (IllegalArgumentException e) {
-            assertEquals("Nome inválido", e.getMessage());
+            assertEquals("Nome invalido", e.getMessage());
         }
     }
+
+    @Test
+    void deveLancarExcecaoNomeNuloConstrutor() {
+        try {
+            Pessoa pessoa = new Professor("");
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Nome invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveLancarExcecaoNomeVazio() {
+        try {
+            Pessoa pessoa = new Professor(" ");
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Nome invalido", e.getMessage());
+        }
+    }
+
+
 }

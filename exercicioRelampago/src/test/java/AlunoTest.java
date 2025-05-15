@@ -1,116 +1,79 @@
-import org.junit.jupiter.api.BeforeEach;
+package IF_OO_20251.ERS35;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlunoTest {
-    Pessoa pessoa;
-    Aluno aluno;
 
-    @BeforeEach
-    public void setUp() {
-        pessoa = new Pessoa();
-        aluno = new Aluno();
+    @Test
+    void deveAtribuirNota1() {
+        Aluno aluno = new AlunoGraduacao("Ana");
+        aluno.setNota1(0.0f);
+        assertEquals(0.0f, aluno.getNota1());
     }
 
     @Test
-    public void devePossuirNomeValido() {
-        pessoa.setNome("Pessoa");
-        assertEquals("Pessoa", pessoa.getNome());
-    }
-
-    @Test
-    public void deveTestarNomeVazio() {
+    void deveLancarExcecaoNota1Negativa() {
         try {
-            pessoa.setNome("");
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Nome inválido", e.getMessage());
-        }
-    }
-
-    @Test
-    public void deveCalcularMedia() {
-        aluno.setNota1(8);
-        aluno.setNota2(6);
-        assertEquals(7, aluno.calcularMedia());
-    }
-
-    @Test
-    public void deveTestarNota1Negativa() {
-        try {
+            Aluno aluno = new AlunoGraduacao("Ana");
             aluno.setNota1(-0.1f);
             fail();
         }
         catch (IllegalArgumentException e) {
-            assertEquals("Nota 1 inválida", e.getMessage());
+            assertEquals("Nota 1 invalida", e.getMessage());
         }
     }
 
     @Test
-    public void deveTestarNota2Negativa() {
+    void deveLancarExcecaoNota1AcimaMaximo() {
         try {
-            aluno.setNota2(-0.1f);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Nota 2 inválida", e.getMessage());
-        }
-    }
-
-    @Test
-    public void deveTestarMediaNegativa() {
-        try {
-            aluno.setMedia(-0.1f);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Média inválida", e.getMessage());
-        }
-    }
-
-    @Test
-    public void deveTestarNota1MaiorQueDez() {
-        try {
+            Aluno aluno = new AlunoGraduacao("Ana");
             aluno.setNota1(10.1f);
             fail();
         }
         catch (IllegalArgumentException e) {
-            assertEquals("Nota 1 inválida", e.getMessage());
+            assertEquals("Nota 1 invalida", e.getMessage());
         }
     }
 
     @Test
-    public void deveTestarNota2MaiorQueDez() {
+    void deveAtribuirNota2() {
+        Aluno aluno = new AlunoGraduacao("Ana");
+        aluno.setNota2(0.0f);
+        assertEquals(0.0f, aluno.getNota2());
+    }
+
+    @Test
+    void deveLancarExcecaoNota2Negativa() {
         try {
+            Aluno aluno = new AlunoGraduacao("Ana");
+            aluno.setNota2(-0.1f);
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Nota 2 invalida", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveLancarExcecaoNota2AcimaMaximo() {
+        try {
+            Aluno aluno = new AlunoGraduacao("Ana");
             aluno.setNota2(10.1f);
             fail();
         }
         catch (IllegalArgumentException e) {
-            assertEquals("Nota 2 inválida", e.getMessage());
+            assertEquals("Nota 2 invalida", e.getMessage());
         }
     }
 
     @Test
-    public void deveTestarMediaMaiorQueDez() {
-        try {
-            aluno.setMedia(10.1f);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Média inválida", e.getMessage());
-        }
+    void deveCalcularMedia() {
+        Aluno aluno = new AlunoGraduacao("Ana");
+        aluno.setNota1(2.0f);
+        aluno.setNota2(4.0f);
+        assertEquals(3.0f, aluno.calcularMedia());
     }
 
-    @Test
-    public void deveTestarMatriculaNegativa() {
-        try {
-            aluno.setMatricula(-1);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Matricula inválida", e.getMessage());
-        }
-    }
 }
