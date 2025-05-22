@@ -2,13 +2,13 @@ package atividade05;
 
 public class ProdutoRoupa extends Produto {
 
-    private float precoEtiqueta;
     private float percentualDesconto;
+    private float precoTotalDesconto;
 
-    public ProdutoRoupa(String nome, float precoUnitario, int quantidadeEstoque, float precoTotal, int quantidadeComprada){
+    public ProdutoRoupa(String nome, float precoUnitario, int quantidadeEstoque, float precoTotal, int quantidadeComprada, float percentualDesconto, float precoTotalDesconto){
         super(nome, precoUnitario, quantidadeEstoque, precoTotal, quantidadeComprada);
-        this.setPrecoEtiqueta(precoEtiqueta);
         this.setPercentualDesconto(percentualDesconto);
+        this.setPrecoTotalDesconto(precoTotalDesconto);
     }
 
     public float getPercentualDesconto() {
@@ -16,21 +16,25 @@ public class ProdutoRoupa extends Produto {
     }
 
     public void setPercentualDesconto(float percentualDesconto) {
+        if (percentualDesconto < 0) {
+            throw new IllegalArgumentException("Desconto invalido");
+        }
         this.percentualDesconto = percentualDesconto;
     }
 
-    public float getPrecoEtiqueta() {
-        return this.precoEtiqueta;
+    public float getPrecoTotalDesconto() {
+        return this.precoTotalDesconto;
     }
 
-    public void setPrecoEtiqueta(float precoEtiqueta) {
-        this.precoEtiqueta = precoEtiqueta;
+    public void setPrecoTotalDesconto(float precoTotalDesconto) {
+        this.precoTotalDesconto = precoTotalDesconto;
     }
 
     public float calcularPreco() {
         if (quantidadeComprada <= quantidadeEstoque){
-            precoTotal = (precoEtiqueta * quantidadeComprada);
-            return precoTotal = precoTotal - (precoTotal*percentualDesconto/100);
+            this.quantidadeEstoque = quantidadeEstoque - this.quantidadeComprada;
+            precoTotal = precoUnitario*quantidadeComprada;
+            return precoTotalDesconto = precoTotal - (precoTotal*percentualDesconto/100);
         } else {
             throw new IllegalArgumentException("Estoque insuficiente");
         }

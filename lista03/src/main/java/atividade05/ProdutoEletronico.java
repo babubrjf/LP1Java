@@ -8,6 +8,7 @@ public class ProdutoEletronico extends Produto {
 
     public float calcularPreco() {
         if (quantidadeComprada <= quantidadeEstoque){
+            this.quantidadeEstoque = quantidadeEstoque - this.quantidadeComprada;
             return precoTotal = (precoUnitario * quantidadeComprada);
         } else {
             throw new IllegalArgumentException("Estoque insuficiente");

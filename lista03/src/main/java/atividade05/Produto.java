@@ -21,7 +21,10 @@ public abstract class Produto {
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        if (nome.trim().equals("")) {
+            throw new IllegalArgumentException("Nome invalido");
+        }
+        this.nome = nome.trim();
     }
 
     public float getPrecoUnitario() {
@@ -29,6 +32,9 @@ public abstract class Produto {
     }
 
     public void setPrecoUnitario(float precoUnitario) {
+        if (precoUnitario <= 0){
+            throw new IllegalArgumentException("Preco invalido");
+        }
         this.precoUnitario = precoUnitario;
     }
 
@@ -37,6 +43,9 @@ public abstract class Produto {
     }
 
     public void setQuantidadeEstoque(int quantidadeEstoque) {
+        if (quantidadeEstoque < 0){
+            throw new IllegalArgumentException("Estoque insuficiente");
+        }
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
@@ -45,6 +54,9 @@ public abstract class Produto {
     }
 
     public void setPrecoTotal(float precoTotal) {
+        if (precoTotal < 0){
+            throw new IllegalArgumentException("Preco invalido");
+        }
         this.precoTotal = precoTotal;
     }
 
@@ -53,6 +65,9 @@ public abstract class Produto {
     }
 
     public void setQuantidadeComprada(int quantidadeComprada) {
+        if (quantidadeComprada < 0){
+            throw new IllegalArgumentException("Quantidade invalida");
+        }
         this.quantidadeComprada = quantidadeComprada;
     }
 
