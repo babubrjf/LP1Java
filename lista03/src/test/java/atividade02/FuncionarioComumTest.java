@@ -7,14 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class FuncionarioComumTest {
 
     @Test
-    void deveCalcularSalario() {
-        Funcionario funcionarioComum = new FuncionarioComum(500);
-        funcionarioComum.setSalarioMensal(500.0f);
-        assertEquals(500.0f, funcionarioComum.calcularPagamento(), 0.1f);
+    void deveCalcularSalarioFuncionarioComum() {
+        Funcionario funcionario = new FuncionarioComum(2000.0f);
+        assertEquals(2000.0, funcionario.calcularPagamento());
     }
 
     @Test
-    void deveLancarExcecaoSalarioZerado() {
+    void deveLancarExcecaoSalarioZeradoFuncionarioComum() {
         try {
             Funcionario funcionario = new FuncionarioComum(0);
             fail();
@@ -25,7 +24,7 @@ class FuncionarioComumTest {
     }
 
     @Test
-    void deveLancarExcecaoSalarioNegativo() {
+    void deveLancarExcecaoSalarioNegativoFuncionarioComum() {
         try {
             Funcionario funcionario = new FuncionarioComum(-0.01f);
             fail();

@@ -1,25 +1,25 @@
 package atividade02;
 
 public class Gerente extends Funcionario {
-    private float bonusFixo;
+    private float bonus;
 
-    public Gerente(float salarioMensal) {
+    public Gerente(float salarioMensal, float bonus) {
         super(salarioMensal);
+        this.setBonus(bonus);
     }
 
-    public float getBonusFixo() {
-        return bonusFixo;
+    public float getBonus() {
+        return this.bonus;
     }
 
-    public void setBonusFixo(float bonusFixo) {
-        if (bonusFixo <= 0) {
+    public void setBonus(float bonus) {
+        if (bonus <= 0) {
             throw new IllegalArgumentException("Bonus invalido");
         }
-        this.bonusFixo = bonusFixo;
+        this.bonus = bonus;
     }
 
     public float calcularPagamento() {
-        this.salarioMensal = salarioMensal*(this.bonusFixo/100);
-        return salarioMensal;
+        return salarioMensal + this.bonus;
     }
 }

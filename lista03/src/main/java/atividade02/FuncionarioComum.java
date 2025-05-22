@@ -7,7 +7,6 @@ public class FuncionarioComum extends Funcionario {
     }
 
     public float calcularPagamento() {
-        this.salarioMensal = getSalarioMensal();
         return salarioMensal;
     }
 }
