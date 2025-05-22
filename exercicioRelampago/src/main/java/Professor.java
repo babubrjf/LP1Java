@@ -1,5 +1,3 @@
-package IF_OO_20251.ERS35;
-
 public class Professor extends Pessoa {
 
     private String titulacao;
