@@ -1,8 +1,8 @@
 package atividade06;
 
-public class ContaCorrente extends ContaBancaria {
+public class ContaPoupanca extends ContaBancaria {
 
-    public ContaCorrente(int numeroConta, float saldo, String titular) {
+    public ContaPoupanca(int numeroConta, float saldo, String titular) {
         super(numeroConta, saldo, titular);
     }
 
@@ -10,7 +10,7 @@ public class ContaCorrente extends ContaBancaria {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor invalido");
         }
-        return this.saldo = (this.saldo + valor) - ((this.saldo + valor)*taxa/100);
+        return this.saldo = (this.saldo + valor);
     }
 
     public float sacar(float valor, float taxa) {
@@ -19,10 +19,14 @@ public class ContaCorrente extends ContaBancaria {
         } else if (valor <= 0) {
             throw new IllegalArgumentException("Valor invalido");
         }
-        return this.saldo = (this.saldo - valor) - ((this.saldo - valor)*taxa/100);
+        return this.saldo = (this.saldo - valor);
     }
 
     public float calcularJuros(float taxa) {
-        return 0;
+        float juros = this.saldo * (taxa/100);
+        if (juros <= 0) {
+            throw new IllegalArgumentException("Juros invalidos");
+        }
+        return this.saldo = this.saldo + juros;
     }
 }

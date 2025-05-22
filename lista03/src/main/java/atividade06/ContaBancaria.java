@@ -4,13 +4,11 @@ public abstract class ContaBancaria {
 
     protected int numeroConta;
     protected float saldo;
-    protected float valor;
     protected String titular;
 
-    public ContaBancaria(int numeroConta, float saldo, float valor, String titular){
+    public ContaBancaria(int numeroConta, float saldo, String titular){
         this.setNumeroConta(numeroConta);
         this.setSaldo(saldo);
-        this.setValor(valor);
         this.setTitular(titular);
     }
 
@@ -36,17 +34,6 @@ public abstract class ContaBancaria {
         this.saldo = saldo;
     }
 
-    public float getValor() {
-        return this.valor;
-    }
-
-    public void setValor(float valor) {
-        if (valor <= 0) {
-            throw new IllegalArgumentException("Valor invalido");
-        }
-        this.valor = valor;
-    }
-
     public String getTitular() {
         return this.titular;
     }
@@ -58,9 +45,9 @@ public abstract class ContaBancaria {
         this.titular = titular.trim();
     }
 
-    public abstract float depositar();
+    public abstract float depositar(float valor, float taxa);
 
-    public abstract float sacar();
+    public abstract float sacar(float valor, float taxa);
 
-    public abstract float calcularJuros();
+    public abstract float calcularJuros(float taxa);
 }
