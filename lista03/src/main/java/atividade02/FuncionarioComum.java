@@ -6,7 +6,7 @@ public class FuncionarioComum extends Funcionario {
         super(salarioMensal);
     }
 
-    public float calcularPagamento() {
+    public float calcularPagamento(float pagamentoMensal) {
         return salarioMensal;
     }
 }

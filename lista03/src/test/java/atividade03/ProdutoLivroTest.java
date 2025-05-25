@@ -7,16 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProdutoLivroTest {
 
     @Test
-    void deveCalcularPrecoCapa() {
-        ProdutoLivro produtoLivro = new ProdutoLivro("Livro A", 35.0f, 30.0f);
-        produtoLivro.setPrecoCapa(10.0f);
-        assertEquals(28.0f, produtoLivro.calcularPreco(), 0.1f);
+    void deveCalcularPrecoCapaProduto() {
+        Produto produto = new ProdutoLivro("Carrinho de Brinquedo", 10.0f);
+        assertEquals(9.5f, produto.calcularPreco(9.5f), 0.1f);
     }
 
     @Test
-    void deveLancarExcecaoPrecoCapaZerado() {
+    void deveLancarExcecaoPrecoCapaProdutoLivroZerado() {
         try {
-            ProdutoLivro produtoLivro = new ProdutoLivro("Livro A", 10.0f, 0);
+            ProdutoLivro produtoLivro = new ProdutoLivro("Carrinho de Brinquedo", 10.0f);
+            produtoLivro.calcularPreco(0.0f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -25,9 +25,10 @@ class ProdutoLivroTest {
     }
 
     @Test
-    void deveLancarExcecaoPrecoCapaNegativo() {
+    void deveLancarExcecaoPrecoCapaProdutoLivroNegativo() {
         try {
-            ProdutoLivro produtoLivro = new ProdutoLivro("Livro A", 15.0f, -0.1f);
+            ProdutoLivro produtoLivro = new ProdutoLivro("Carrinho de Brinquedo", 10.0f);
+            produtoLivro.calcularPreco(-0.01f);
             fail();
         }
         catch (IllegalArgumentException e) {

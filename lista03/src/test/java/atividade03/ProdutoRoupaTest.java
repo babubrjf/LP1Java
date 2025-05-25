@@ -7,31 +7,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProdutoRoupaTest {
 
     @Test
-    void deveCalcularPrecoRoupa() {
-        ProdutoRoupa produtoRoupa = new ProdutoRoupa("Camisa G", 35.0f, 30.0f);
-        produtoRoupa.setPrecoEtiqueta(100.0f);
-        assertEquals(95.0f, produtoRoupa.calcularPreco(), 0.1f);
+    void deveCalcularPrecoRoupaProduto() {
+        Produto produto = new ProdutoRoupa("Carrinho de Brinquedo", 10.0f);
+        assertEquals(8.0f, produto.calcularPreco(8.0f), 0.1f);
     }
 
     @Test
-    void deveLancarExcecaoPrecoRoupaZerado() {
+    void deveLancarExcecaoPrecoRoupaProdutoRoupaZerado() {
         try {
-            ProdutoRoupa produtoRoupa = new ProdutoRoupa("Camisa G", 10.0f, 0);
+            ProdutoRoupa produtoRoupa = new ProdutoRoupa("Carrinho de Brinquedo", 10.0f);
+            produtoRoupa.calcularPreco(0.0f);
             fail();
         }
         catch (IllegalArgumentException e) {
-            assertEquals("Preco roupa invalido", e.getMessage());
+            assertEquals("Preco etiqueta invalido", e.getMessage());
         }
     }
 
     @Test
-    void deveLancarExcecaoPrecoVarejoProdutoLivroNegativo() {
+    void deveLancarExcecaoPrecoRoupaProdutoRoupaNegativo() {
         try {
-            ProdutoRoupa produtoRoupa = new ProdutoRoupa("Camisa G", 15.0f, -0.1f);
+            ProdutoRoupa produtoRoupa = new ProdutoRoupa("Carrinho de Brinquedo", 10.0f);
+            produtoRoupa.calcularPreco(-0.01f);
             fail();
         }
         catch (IllegalArgumentException e) {
-            assertEquals("Preco roupa invalido", e.getMessage());
+            assertEquals("Preco etiqueta invalido", e.getMessage());
         }
     }
 }

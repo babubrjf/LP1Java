@@ -19,5 +19,5 @@ public abstract class Funcionario {
         this.salarioMensal = salarioMensal;
     }
 
-    public abstract float calcularPagamento();
+    public abstract float calcularPagamento(float pagamentoMensal);
 }

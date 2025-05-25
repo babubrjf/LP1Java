@@ -19,7 +19,7 @@ public class Gerente extends Funcionario {
         this.bonus = bonus;
     }
 
-    public float calcularPagamento() {
+    public float calcularPagamento(float pagamentoMensal) {
         return salarioMensal + this.bonus;
     }
 }

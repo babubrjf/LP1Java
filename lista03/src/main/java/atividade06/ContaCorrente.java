@@ -18,6 +18,8 @@ public class ContaCorrente extends ContaBancaria {
             throw new IllegalArgumentException("Saldo insuficiente");
         } else if (valor <= 0) {
             throw new IllegalArgumentException("Valor invalido");
+        } else if (taxa <= 0) {
+            throw new IllegalArgumentException("Taxa invalida");
         }
         return this.saldo = (this.saldo - valor) - ((this.saldo - valor)*taxa/100);
     }

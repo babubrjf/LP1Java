@@ -1,7 +1,5 @@
 package atividade03;
 
-import atividade02.Funcionario;
-import atividade02.FuncionarioComum;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,14 +8,15 @@ class ProdutoEletronicoTest {
 
     @Test
     void deveCalcularPrecoVarejoProduto() {
-        Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", 10.0f, 5.0f);
-        assertEquals(9.0f, produto.calcularPreco(), 0.1f);
+        Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", 10.0f);
+        assertEquals(9.0f, produto.calcularPreco(9.0f), 0.1f);
     }
 
     @Test
     void deveLancarExcecaoPrecoVarejoProdutoEletronicoZerado() {
         try {
-            ProdutoEletronico produtoEletronico = new ProdutoEletronico("Carrinho de Brinquedo", 10.0f, 0);
+            ProdutoEletronico produtoEletronico = new ProdutoEletronico("Carrinho de Brinquedo", 10.0f);
+            produtoEletronico.calcularPreco(0.0f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -28,7 +27,8 @@ class ProdutoEletronicoTest {
     @Test
     void deveLancarExcecaoPrecoVarejoProdutoEletronicoNegativo() {
         try {
-            ProdutoEletronico produtoEletronico = new ProdutoEletronico("Carrinho de Brinquedo", 15.0f, -0.1f);
+            ProdutoEletronico produtoEletronico = new ProdutoEletronico("Carrinho de Brinquedo", 10.0f);
+            produtoEletronico.calcularPreco(-0.01f);
             fail();
         }
         catch (IllegalArgumentException e) {

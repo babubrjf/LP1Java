@@ -8,14 +8,25 @@ class GerenteTest {
 
     @Test
     void deveCalcularSalarioGerente() {
-        Gerente gerente = new Gerente(2400.0f, 550.0f);
-        assertEquals(2950.0f, gerente.calcularPagamento());
+        Funcionario funcionario = new Gerente(2400.0f, 550.0f);
+        assertEquals(2950.0f, funcionario.calcularPagamento(2950.0f) , 0.01f);
     }
 
     @Test
     void deveLancarExcecaoSalarioZeradoGerente() {
         try {
-            Gerente gerente = new Gerente(0, 550.0f);
+            Funcionario funcionario = new Gerente(0, 550.0f);
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Salario invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveLancarExcecaoSalarioNegativoGerente() {
+        try {
+            Funcionario funcionario = new Gerente(-0.01f, 300.0f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -26,7 +37,7 @@ class GerenteTest {
     @Test
     void deveLancarExcecaoBonusZeradoGerente() {
         try {
-            Gerente gerente = new Gerente(2500.0f, 0);
+            Funcionario funcionario = new Gerente(2500.0f, 0);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -35,20 +46,9 @@ class GerenteTest {
     }
 
     @Test
-    void deveLancarExcecaoSalarioNegativoGerente() {
-        try {
-            Gerente gerente = new Gerente(-0.1f, 300.0f);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Salario invalido", e.getMessage());
-        }
-    }
-
-    @Test
     void deveLancarExcecaoBonusNegativoGerente() {
         try {
-            Gerente gerente = new Gerente(2570.45f, -0.1f);
+            Funcionario funcionario = new Gerente(2570.45f, -0.01f);
             fail();
         }
         catch (IllegalArgumentException e) {

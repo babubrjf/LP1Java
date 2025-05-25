@@ -28,5 +28,5 @@ public abstract class MaterialBiblioteca {
         this.dataPublicacao = dataPublicacao;
     }
 
-    public abstract LocalDate calcularDataDevolucao(LocalDate dataEmprestimo);
+    public abstract LocalDate calcularDataDevolucao(LocalDate dataEmprestimo, LocalDate dataDevolucao);
 }

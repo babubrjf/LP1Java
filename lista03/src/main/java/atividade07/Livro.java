@@ -8,7 +8,10 @@ public class Livro extends MaterialBiblioteca {
         super(titulo, dataPublicacao);
     }
 
-    public LocalDate calcularDataDevolucao(LocalDate dataEmprestimo) {
+    public LocalDate calcularDataDevolucao(LocalDate dataEmprestimo, LocalDate dataDevolucao) {
+        if (dataDevolucao.isBefore(dataEmprestimo)) {
+            throw new IllegalArgumentException("Data invalida");
+        }
         return dataEmprestimo.plusDays(15);
     }
 }

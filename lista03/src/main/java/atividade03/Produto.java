@@ -32,5 +32,5 @@ public abstract class Produto {
         this.precoBase = precoBase;
     }
 
-    public abstract float calcularPreco();
+    public abstract float calcularPreco(float precoBase);
 }

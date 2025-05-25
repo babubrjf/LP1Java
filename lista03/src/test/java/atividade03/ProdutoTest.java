@@ -8,20 +8,20 @@ class ProdutoTest {
 
     @Test
     void deveRegistrarNome() {
-        Produto produto = new ProdutoEletronico("Ipod", 1500.0f, 1200.0f);
+        Produto produto = new ProdutoEletronico("Ipod", 1500.0f);
         assertEquals("Ipod", produto.getNome());
     }
 
     @Test
     void deveRegistrarNomeTirandoEspacos() {
-        Produto produto = new ProdutoEletronico(" Ipod ", 1500.0f, 1200.0f);
+        Produto produto = new ProdutoEletronico(" Ipod ", 1500.0f);
         assertEquals("Ipod", produto.getNome());
     }
 
     @Test
     void deveLancarExcecaoNomeNulo() {
         try {
-            Produto produto = new ProdutoEletronico("Ipod", 1500.0f, 1200.0f);
+            Produto produto = new ProdutoEletronico("Ipod", 1500.0f);
             produto.setNome("");
             fail();
         }
@@ -33,7 +33,7 @@ class ProdutoTest {
     @Test
     void deveLancarExcecaoNomeNuloConstrutor() {
         try {
-            Produto produto = new ProdutoEletronico("", 100.0f, 90.0f);
+            Produto produto = new ProdutoEletronico("", 100.0f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -44,7 +44,7 @@ class ProdutoTest {
     @Test
     void deveLancarExcecaoNomeVazio() {
         try {
-            Produto produto = new ProdutoEletronico(" ", 100.0f, 90.0f);
+            Produto produto = new ProdutoEletronico(" ", 100.0f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -53,15 +53,15 @@ class ProdutoTest {
     }
 
     @Test
-    void deveCalcularPrecoBaseProduto() {
-        Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", 10.0f, 5.0f);
-        assertEquals(9.0f, produto.calcularPreco(), 0.1f);
+    void deveRegistrarPrecoBaseProduto() {
+        Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", 10.0f);
+        assertEquals(10.0f, produto.getPrecoBase(), 0.1f);
     }
 
     @Test
     void deveLancarExcecaoPrecoBaseProdutoZerado() {
         try {
-            Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", 0, 5.0f);
+            Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", 0);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -72,7 +72,7 @@ class ProdutoTest {
     @Test
     void deveLancarExcecaoPrecoBaseProdutoNegativo() {
         try {
-            Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", -0.1f, 5.0f);
+            Produto produto = new ProdutoEletronico("Carrinho de Brinquedo", -0.1f);
             fail();
         }
         catch (IllegalArgumentException e) {

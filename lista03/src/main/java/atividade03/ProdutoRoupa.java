@@ -2,26 +2,14 @@ package atividade03;
 
 public class ProdutoRoupa extends Produto {
 
-    private float precoEtiqueta;
-
-    public ProdutoRoupa(String nome, float precoBase, float precoEtiqueta){
+    public ProdutoRoupa(String nome, float precoBase){
         super(nome, precoBase);
-        this.setPrecoEtiqueta(precoEtiqueta);
     }
 
-    public float getPrecoEtiqueta() {
-        return precoEtiqueta;
-    }
-
-    public void setPrecoEtiqueta(float precoEtiqueta) {
+    public float calcularPreco(float precoEtiqueta){
         if (precoEtiqueta <= 0) {
-            throw new IllegalArgumentException("Preco roupa invalido");
+            throw new IllegalArgumentException("Preco etiqueta invalido");
         }
-        this.precoEtiqueta = precoEtiqueta;
-    }
-
-    public float calcularPreco(){
-        precoBase = this.precoEtiqueta - (precoEtiqueta*5/100);
-        return precoBase;
+        return this.precoBase * 0.8f;
     }
 }

@@ -1,19 +1,19 @@
 package atividade04;
 
+import java.time.LocalDate;
+
 public abstract class Voo {
 
     protected String origem;
-    protected float distancia;
     protected String destino;
-    protected String data;
-    protected float preco;
+    protected float distancia;
+    protected LocalDate data;
 
-    public Voo(String origem, float distancia, String destino, String data, float preco){
+    public Voo(String origem, String destino, float distancia, LocalDate data){
         this.setOrigem(origem);
-        this.setDistancia(distancia);
         this.setDestino(destino);
+        this.setDistancia(distancia);
         this.setData(data);
-        this.setPreco(preco);
     }
 
     public String getOrigem() {
@@ -21,7 +21,10 @@ public abstract class Voo {
     }
 
     public void setOrigem(String origem) {
-        this.origem = origem;
+        if (origem.trim().equals("")) {
+            throw new IllegalArgumentException("Origem invalida");
+        }
+        this.origem = origem.trim();
     }
 
     public float getDistancia() {
@@ -29,6 +32,9 @@ public abstract class Voo {
     }
 
     public void setDistancia(float distancia) {
+        if (distancia <= 0) {
+            throw new IllegalArgumentException("Distancia invalida");
+        }
         this.distancia = distancia;
     }
 
@@ -37,26 +43,22 @@ public abstract class Voo {
     }
 
     public void setDestino(String destino) {
-        this.destino = destino;
+        if (destino.trim().equals("")) {
+            throw new IllegalArgumentException("Destino invalido");
+        }
+        this.destino = destino.trim();
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return this.data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
+        if (data.isBefore(LocalDate.now()) || data.equals("")) {
+            throw new IllegalArgumentException("Data invalida");
+        }
         this.data = data;
     }
 
-    public float getPreco() {
-        return this.preco;
-    }
-
-    public void setPreco(float preco) {
-        this.preco = preco;
-    }
-
-    public abstract float calcularPreco();
-
-    public abstract float calcularDistancia();
+    public abstract float calcularPreco(float fatorPreco, float taxaConversao);
 }

@@ -8,14 +8,25 @@ class DiretorTest {
 
     @Test
     void deveCalcularSalarioDiretor() {
-        Diretor diretor = new Diretor(5500.0f, 50000.0f, 3.5f);
-        assertEquals(7250.0f, diretor.calcularPagamento());
+        Funcionario funcionario = new Diretor(5500.0f, 50000.0f, 3.5f);
+        assertEquals(7250.0f, funcionario.calcularPagamento(7250.0f) , 0.01f);
     }
 
     @Test
     void deveLancarExcecaoSalarioZeradoDiretor() {
         try {
-            Diretor diretor = new Diretor(0, 50000.0f, 3.5f);
+            Funcionario funcionario = new Diretor(0, 50000.0f, 3.5f);
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Salario invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveLancarExcecaoSalarioNegativoDiretor() {
+        try {
+            Funcionario funcionario = new Diretor(-0.01f, 50000.0f, 3.5f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -26,7 +37,18 @@ class DiretorTest {
     @Test
     void deveLancarExcecaoPercentualZeradoDiretor() {
         try {
-            Diretor diretor = new Diretor(13000.0f, 50000.0f, 0);
+            Funcionario funcionario = new Diretor(13000.0f, 50000.0f, 0);
+            fail();
+        }
+        catch (IllegalArgumentException e) {
+            assertEquals("Percentual invalido", e.getMessage());
+        }
+    }
+
+    @Test
+    void deveLancarExcecaoPercentualNegativoDiretor() {
+        try {
+            Funcionario funcionario = new Diretor(13000.0f, 50000.0f, -0.01f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -37,7 +59,7 @@ class DiretorTest {
     @Test
     void deveLancarExcecaoLucroEmpresaZerado() {
         try {
-            Diretor diretor = new Diretor(5000.0f, 0, 3.5f);
+            Funcionario funcionario = new Diretor(5000.0f, 0, 3.5f);
             fail();
         }
         catch (IllegalArgumentException e) {
@@ -46,31 +68,9 @@ class DiretorTest {
     }
 
     @Test
-    void deveLancarExcecaoSalarioNegativoDiretor() {
-        try {
-            Diretor diretor = new Diretor(-0.1f, 50000.0f, 3.5f);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Salario invalido", e.getMessage());
-        }
-    }
-
-    @Test
-    void deveLancarExcecaoPercentualNegativoDiretor() {
-        try {
-            Diretor diretor = new Diretor(13000.0f, 50000.0f, -0.1f);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Percentual invalido", e.getMessage());
-        }
-    }
-
-    @Test
     void deveLancarExcecaoLucroEmpresaNegativo() {
         try {
-            Diretor diretor = new Diretor(5000.0f, -0.01f, 3.5f);
+            Funcionario funcionario = new Diretor(5000.0f, -0.01f, 3.5f);
             fail();
         }
         catch (IllegalArgumentException e) {

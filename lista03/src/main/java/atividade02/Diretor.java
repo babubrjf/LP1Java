@@ -33,7 +33,7 @@ public class Diretor extends Funcionario {
         this.percentualParticipacao = percentualParticipacao;
     }
 
-    public float calcularPagamento() {
+    public float calcularPagamento(float pagamentoMensal) {
         return salarioMensal + (lucroEmpresa * percentualParticipacao/100);
     }
 }

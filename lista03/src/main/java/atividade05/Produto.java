@@ -5,15 +5,11 @@ public abstract class Produto {
     protected String nome;
     protected float precoUnitario;
     protected int quantidadeEstoque;
-    protected float precoTotal;
-    protected int quantidadeComprada;
 
-    public Produto(String nome, float precoUnitario, int quantidadeEstoque, float precoTotal, int quantidadeComprada){
+    public Produto(String nome, float precoUnitario, int quantidadeEstoque){
         this.setNome(nome);
         this.setPrecoUnitario(precoUnitario);
         this.setQuantidadeEstoque(quantidadeEstoque);
-        this.setPrecoTotal(precoTotal);
-        this.setQuantidadeComprada(quantidadeComprada);
     }
 
     public String getNome() {
@@ -44,32 +40,10 @@ public abstract class Produto {
 
     public void setQuantidadeEstoque(int quantidadeEstoque) {
         if (quantidadeEstoque < 0){
-            throw new IllegalArgumentException("Estoque insuficiente");
+            throw new IllegalArgumentException("Estoque invalido");
         }
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public float getPrecoTotal() {
-        return this.precoTotal;
-    }
-
-    public void setPrecoTotal(float precoTotal) {
-        if (precoTotal < 0){
-            throw new IllegalArgumentException("Preco invalido");
-        }
-        this.precoTotal = precoTotal;
-    }
-
-    public int getQuantidadeComprada() {
-        return this.quantidadeComprada;
-    }
-
-    public void setQuantidadeComprada(int quantidadeComprada) {
-        if (quantidadeComprada < 0){
-            throw new IllegalArgumentException("Quantidade invalida");
-        }
-        this.quantidadeComprada = quantidadeComprada;
-    }
-
-    public abstract float calcularPreco();
+    public abstract float calcularPreco(int quantidadeComprada, float desconto);
 }

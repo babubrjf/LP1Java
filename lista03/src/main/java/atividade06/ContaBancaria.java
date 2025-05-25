@@ -17,7 +17,7 @@ public abstract class ContaBancaria {
     }
 
     public void setNumeroConta(int numeroConta) {
-        if (numeroConta < 0) {
+        if (numeroConta <= 0) {
             throw new IllegalArgumentException("Numero da conta invalido");
         }
         this.numeroConta = numeroConta;
