@@ -1,36 +1,21 @@
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class CidadeTest {
+public class CidadeTest {
 
     @Test
-    void deveRetornarNomeEstado() {
+    public void testGetSetNome() {
+        Cidade cidade = new Cidade();
+        cidade.setNome("Belo Horizonte");
+        assertEquals("Belo Horizonte", cidade.getNome());
+    }
+
+    @Test
+    public void testGetSetEstado() {
+        Cidade cidade = new Cidade();
         Estado estado = new Estado();
-        estado.setNome("MG");
-        Cidade cidade = new Cidade(estado);
-        assertEquals("MG", cidade.getNomeEstado());
-    }
-
-    @Test
-    void deveRetornarExcecaoEstadoNuloConstrutor() {
-        try {
-            Cidade cidade = new Cidade(null);
-            fail();
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("Estado invalido", e.getMessage());
-        }
-    }
-
-    @Test
-    void deveRetornarExcecaoEstadoNulo() {
-        try {
-            Cidade cidade = new Cidade(new Estado());
-            cidade.setEstado(null);
-            fail();
-        } catch (IllegalArgumentException e) {
-            assertEquals("Estado invalido", e.getMessage());
-        }
+        estado.setNome("Minas Gerais");
+        cidade.setEstado(estado);
+        assertEquals("Minas Gerais", cidade.getEstado().getNome());
     }
 }

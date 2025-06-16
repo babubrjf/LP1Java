@@ -1,21 +1,30 @@
 public class Curso {
 
-    private Professor professor;
+    private Professor coordenacao;
+    private Escola escola;
+    private TipoEnsino tipoEnsino;
 
-    public Professor getProfessor() {
-        return this.professor;
+    public Professor getCoordenacao() {
+        return this.coordenacao;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setCoordenacao(Professor coordenacao) {
+        this.coordenacao = coordenacao;
     }
 
-    public String getEscolaridadeProfessor() {
-        if (this.professor == null) {
-            return "Pessoa sem escolaridade";
-        }
-        else {
-            return this.professor.getNomeEscolaridade();
-        }
+    public Escola getEscola() {
+        return this.escola;
+    }
+
+    public void setEscola(Escola escola) {
+        this.escola = escola;
+    }
+
+    public TipoEnsino getTipoEnsino() {
+        return this.tipoEnsino;
+    }
+
+    public void setTipoEnsino(TipoEnsino tipoEnsino) {
+        this.tipoEnsino = tipoEnsino;
     }
 }

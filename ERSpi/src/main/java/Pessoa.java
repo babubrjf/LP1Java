@@ -1,7 +1,16 @@
 public class Pessoa {
 
+    private Cidade naturalidade;
     private Escolaridade escolaridade;
-    private Cidade cidade;
+    private String nome;
+
+    public Cidade getNaturalidade() {
+        return this.naturalidade;
+    }
+
+    public void setNaturalidade(Cidade naturalidade) {
+        this.naturalidade = naturalidade;
+    }
 
     public Escolaridade getEscolaridade() {
         return this.escolaridade;
@@ -11,27 +20,29 @@ public class Pessoa {
         this.escolaridade = escolaridade;
     }
 
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getNomeEscolaridade() {
         if (this.escolaridade == null) {
             return "Pessoa sem escolaridade";
-        } else {
+        }
+        else {
             return this.escolaridade.getNome();
         }
     }
 
-    public Cidade getCidade() {
-        return this.cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
     public String getNomeCidade() {
-        if (this.cidade == null) {
-            throw new IllegalArgumentException("Cidade invalida");
-        } else {
-            return this.cidade.getNome();
+        if (this.naturalidade == null) {
+            return "Pessoa sem naturalidade";
+        }
+        else {
+            return this.naturalidade.getNome();
         }
     }
 }

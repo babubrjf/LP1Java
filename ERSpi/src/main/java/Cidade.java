@@ -4,15 +4,11 @@ public class Cidade {
     private Estado estado;
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Cidade(Estado estado) {
-        this.setEstado(estado);
     }
 
     public Estado getEstado() {
@@ -20,13 +16,6 @@ public class Cidade {
     }
 
     public void setEstado(Estado estado) {
-        if (estado == null) {
-            throw new IllegalArgumentException("Estado invalido");
-        }
         this.estado = estado;
-    }
-
-    public String getNomeEstado() {
-        return this.estado.getNome();
     }
 }

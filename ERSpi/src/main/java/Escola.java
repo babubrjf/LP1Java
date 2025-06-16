@@ -1,21 +1,21 @@
 public class Escola {
 
-    private Professor professor;
+    private Professor direcao;
+    private Cidade cidade;
 
-    public Professor getProfessor() {
-        return this.professor;
+    public Professor getDirecao() {
+        return this.direcao;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setDirecao(Professor direcao) {
+        this.direcao = direcao;
     }
 
-    public String getEscolaridadeDiretor() {
-        if (this.professor == null) {
-            return "Pessoa sem escolaridade";
-        }
-        else {
-            return this.professor.getNomeEscolaridade();
-        }
+    public Cidade getCidade() {
+        return this.cidade;
+    }
+
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 }

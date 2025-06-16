@@ -1,4 +1,4 @@
-public class Estado {
+public class TipoEnsino {
 
     private String nome;
 

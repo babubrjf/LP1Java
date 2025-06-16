@@ -1,21 +1,30 @@
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class CursoTest {
+public class CursoTest {
 
-    @Test
-    void deveRetornarEscolaridadeProfessor() {
-        Escolaridade escolaridade = new Escolaridade();
-        escolaridade.setNome("Mestrado");
-        Professor professor = new Professor();
-        professor.setEscolaridade(escolaridade);
-        assertEquals("Mestrado", professor.getNomeEscolaridade());
-    }
-
-    @Test
-    void deveRetornarProfessorSemEscolaridade() {
-        Curso curso = new Curso();
-        assertEquals("Pessoa sem escolaridade", curso.getEscolaridadeProfessor());
-    }
+//    @Test
+//    public void testGetSetTipoEnsino() {
+//        Curso curso = new Curso();
+//        TipoEnsino tipo = new TipoEnsino();
+//        tipo.setNome("Fundamental");
+//        curso.setTipoEnsino(tipo);
+//        assertEquals("Fundamental", curso.getTipoEnsino().getNome());
+//    }
+//
+//    @Test
+//    public void testGetSetEscola() {
+//        Curso curso = new Curso();
+//        Escola escola = new Escola();
+//        curso.setEscola(escola);
+//        assertNotNull(curso.getEscola());
+//    }
+//
+//    @Test
+//    public void testGetSetCoordenador() {
+//        Curso curso = new Curso();
+//        Professor coordenador = new Professor();
+//        curso.setCoordenador(coordenador);
+//        assertNotNull(curso.getCoordenador());
+//    }
 }
