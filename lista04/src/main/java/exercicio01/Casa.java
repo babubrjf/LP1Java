@@ -22,6 +22,10 @@ public class Casa extends Imovel {
     }
 
     public float calcularIPTU() {
-        return (this.mQuadradoTerreno * 30.0f) + (this.mQuadradoConstrucao * 50.0f);
+        if (this.mQuadradoConstrucao > 0 || this.mQuadradoTerreno > 0) {
+            return (this.mQuadradoTerreno * 30.0f) + (this.mQuadradoConstrucao * 50.0f);
+        } else {
+            throw new IllegalArgumentException("");
+        }
     }
 }

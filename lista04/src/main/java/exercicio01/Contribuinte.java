@@ -44,4 +44,12 @@ public class Contribuinte {
     public int getQuantidadeImoveis() {
         return this.imoveis.size();
     }
+
+    public float calcularTotalIPTU() {
+        float total = 0.0f;
+        for (Imovel imovel : this.imoveis) {
+            total += imovel.calcularIPTU();
+        }
+        return total;
+    }
 }
