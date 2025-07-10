@@ -2,6 +2,7 @@ package exercicio06;
 
 public abstract class Vaga {
 
+    private Cliente cliente;
     private int numero;
     private String placa;
 

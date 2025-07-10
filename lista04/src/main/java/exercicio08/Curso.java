@@ -1,7 +1,5 @@
 package exercicio08;
 
-import exemplo.Funcionario;
-
 import java.util.ArrayList;
 
 public class Curso {

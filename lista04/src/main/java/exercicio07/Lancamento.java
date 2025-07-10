@@ -2,16 +2,7 @@ package exercicio07;
 
 public class Lancamento extends Fita {
 
-    private int dias;
     private float aluguelDiario;
-
-    public int getDias() {
-        return this.dias;
-    }
-
-    public void setDias(int dias) {
-        this.dias = dias;
-    }
 
     public float getAluguelDiario() {
         return this.aluguelDiario;
@@ -22,8 +13,8 @@ public class Lancamento extends Fita {
     }
 
     public float emprestimo() {
-        if (dias > 0) {
-            return this.dias * this.aluguelDiario;
+        if (getDias() > 0) {
+            return getDias() * this.aluguelDiario;
         }
         throw new IllegalArgumentException("Numero de Dias invalido");
     }

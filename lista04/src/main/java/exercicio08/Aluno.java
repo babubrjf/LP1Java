@@ -2,6 +2,7 @@ package exercicio08;
 
 public abstract class Aluno {
 
+    private Curso curso;
     private int matricula;
     private String nome;
     private String endereco;

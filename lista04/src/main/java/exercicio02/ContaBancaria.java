@@ -4,6 +4,7 @@ public abstract class ContaBancaria {
 
     private Cliente cliente;
     private int numero;
+    private float saldo;
 
     public Cliente getCliente() {
         return this.cliente;
@@ -22,6 +23,14 @@ public abstract class ContaBancaria {
             throw new IllegalArgumentException("Numero da conta invalido.");
         }
         this.numero = numero;
+    }
+
+    public float getSaldo() {
+        return this.saldo;
+    }
+
+    public void setSaldo(float saldo) {
+        this.saldo = saldo;
     }
 
     public abstract float informarSaldo();

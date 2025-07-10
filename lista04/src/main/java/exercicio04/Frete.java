@@ -2,6 +2,7 @@ package exercicio04;
 
 public abstract class Frete {
 
+    private Cliente cliente;
     private int numero;
     private float valor;
 

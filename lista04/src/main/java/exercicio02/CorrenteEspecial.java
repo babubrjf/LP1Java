@@ -2,16 +2,7 @@ package exercicio02;
 
 public class CorrenteEspecial extends ContaBancaria {
 
-    private float saldo;
     private float limite;
-
-    public float getSaldo() {
-        return this.saldo;
-    }
-
-    public void setSaldo(float saldo) {
-        this.saldo = saldo;
-    }
 
     public float getLimite() {
         return this.limite;
@@ -22,7 +13,7 @@ public class CorrenteEspecial extends ContaBancaria {
     }
 
     public float informarSaldo() {
-        return this.saldo + this.limite;
+        return getSaldo() + this.limite;
     }
 
     public float informarLimite() {

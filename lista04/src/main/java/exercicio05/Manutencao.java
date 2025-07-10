@@ -2,6 +2,7 @@ package exercicio05;
 
 public abstract class Manutencao {
 
+    private Cliente cliente;
     private int numero;
     private float maoDeObra;
 
