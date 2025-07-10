@@ -22,5 +22,6 @@ public class Mensalista extends Aluno {
     }
 
     public float calcularMensalidade() {
+        return this.valorMensalidade / this.numParcelas;
     }
 }

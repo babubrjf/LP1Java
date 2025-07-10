@@ -27,12 +27,13 @@ public class BolsistaParcial extends Aluno {
     }
 
     public void setPercentual(float percentual) {
-        if (percentual > 50) {
-            throw new IllegalArgumentException("Percentual maior que 50%");
+        if (percentual <= 0.0f || percentual > 50.0f) {
+            throw new IllegalArgumentException("Percentual Invalido");
         }
         this.percentual = percentual;
     }
 
     public float calcularMensalidade() {
+        return (this.valorMensalidade / this.numParcelas) * (this.percentual/100);
     }
 }
