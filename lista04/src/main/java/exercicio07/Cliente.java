@@ -6,15 +6,10 @@ public class Cliente {
 
     private int codigo;
     private String nome;
-
     private ArrayList<Fita> fitas;
 
-    public Cliente() {
-        this.fitas = new ArrayList<Fita>();
-    }
-
     public int getCodigo() {
-        return this.codigo;
+        return codigo;
     }
 
     public void setCodigo(int codigo) {
@@ -22,11 +17,15 @@ public class Cliente {
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Cliente() {
+        this.fitas = new ArrayList<Fita>();
     }
 
     public ArrayList getFitas() {
@@ -45,11 +44,11 @@ public class Cliente {
         return this.fitas.size();
     }
 
-    public float calcularTotalEmprestimo() {
-        float total = 0.0f;
-        for (Fita fita : this.fitas) {
-            total += fita.emprestimo();
-        }
-        return total;
+    public boolean verificarFita(Fita fita) {
+        return this.fitas.contains(fita);
+    }
+
+    public void removerFita(Fita fita) {
+        this.fitas.remove(fita);
     }
 }

@@ -2,14 +2,14 @@ package exercicio01;
 
 public abstract class Imovel {
 
-    private String tipo;
+    private Contribuinte contribuinte;
 
-    public String getTipo() {
-        return this.tipo;
+    public Contribuinte getContribuinte() {
+        return this.contribuinte;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setContribuinte(Contribuinte contribuinte) {
+        this.contribuinte = contribuinte;
     }
 
     public abstract float calcularIPTU();

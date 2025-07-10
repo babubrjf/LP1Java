@@ -1,20 +1,17 @@
 package exercicio01;
 
+import exemplo.Funcionario;
+
 import java.util.ArrayList;
 
 public class Contribuinte {
 
     private int codigo;
     private String nome;
-
     private ArrayList<Imovel> imoveis;
 
-    public Contribuinte() {
-        this.imoveis = new ArrayList<Imovel>();
-    }
-
     public int getCodigo() {
-        return this.codigo;
+        return codigo;
     }
 
     public void setCodigo(int codigo) {
@@ -22,11 +19,15 @@ public class Contribuinte {
     }
 
     public String getNome() {
-        return this.nome;
+        return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Contribuinte() {
+        this.imoveis = new ArrayList<Imovel>();
     }
 
     public ArrayList getImoveis() {
@@ -51,5 +52,13 @@ public class Contribuinte {
             total += imovel.calcularIPTU();
         }
         return total;
+    }
+
+    public boolean verificarImovel(Imovel imovel) {
+        return this.imoveis.contains(imovel);
+    }
+
+    public void removerImovel(Imovel imovel) {
+        this.imoveis.remove(imovel);
     }
 }

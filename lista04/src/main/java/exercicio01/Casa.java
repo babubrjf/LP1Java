@@ -2,30 +2,32 @@ package exercicio01;
 
 public class Casa extends Imovel {
 
-    private float mQuadradoConstrucao;
-    private float mQuadradoTerreno;
+    private float metragemTerreno;
+    private float metragemConstrucao;
 
-    public float getmQuadradoConstrucao() {
-        return this.mQuadradoConstrucao;
+    public float getMetragemTerreno() {
+        return this.metragemTerreno;
     }
 
-    public void setmQuadradoConstrucao(float mQuadradoConstrucao) {
-        this.mQuadradoConstrucao = mQuadradoConstrucao;
+    public void setMetragemTerreno(float metragemTerreno) {
+        if (metragemTerreno <= 0) {
+            throw new IllegalArgumentException("A area do terreno deve ser maior que zero.");
+        }
+        this.metragemTerreno = metragemTerreno;
     }
 
-    public float getmQuadradoTerreno() {
-        return this.mQuadradoTerreno;
+    public float getMetragemConstrucao() {
+        return metragemConstrucao;
     }
 
-    public void setmQuadradoTerreno(float mQuadradoTerreno) {
-        this.mQuadradoTerreno = mQuadradoTerreno;
+    public void setMetragemConstrucao(float metragemConstrucao) {
+        if (metragemConstrucao <= 0) {
+            throw new IllegalArgumentException("A area da construcao deve ser maior que zero.");
+        }
+        this.metragemConstrucao = metragemConstrucao;
     }
 
     public float calcularIPTU() {
-        if (this.mQuadradoConstrucao > 0 || this.mQuadradoTerreno > 0) {
-            return (this.mQuadradoTerreno * 30.0f) + (this.mQuadradoConstrucao * 50.0f);
-        } else {
-            throw new IllegalArgumentException("");
-        }
+        return this.metragemTerreno * 30.0f + this.metragemConstrucao * 50.0f;
     }
 }

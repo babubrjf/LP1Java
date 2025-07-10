@@ -2,17 +2,20 @@ package exercicio01;
 
 public class Lote extends Imovel {
 
-    private float mQuadradoTerreno;
+    private float metragemTerreno;
 
-    public float getmQuadradoTerreno() {
-        return this.mQuadradoTerreno;
+    public float getMetragemTerreno() {
+        return this.metragemTerreno;
     }
 
-    public void setmQuadradoTerreno(float mQuadradoTerreno) {
-        this.mQuadradoTerreno = mQuadradoTerreno;
+    public void setMetragemTerreno(float metragemTerreno) {
+        if (metragemTerreno <= 0) {
+            throw new IllegalArgumentException("A metragem do terreno deve ser maior que zero.");
+        }
+        this.metragemTerreno = metragemTerreno;
     }
 
     public float calcularIPTU() {
-        return (this.mQuadradoTerreno * 30.0f);
+        return this.metragemTerreno * 30.0f;
     }
 }
