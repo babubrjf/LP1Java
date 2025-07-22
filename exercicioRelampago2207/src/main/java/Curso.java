@@ -2,100 +2,86 @@ import java.util.ArrayList;
 
 public class Curso {
 
-    private ArrayList<Professor> professores;
-    private ArrayList<Aluno> alunos;
     private ArrayList<Turma> turmas;
+    private ArrayList<Aluno> alunos;
 
     public Curso() {
-        this.professores = new ArrayList<Professor>();
-        this.alunos = new ArrayList<Aluno>();
         this.turmas = new ArrayList<Turma>();
+        this.alunos = new ArrayList<Aluno>();
     }
 
-    public ArrayList getProfessores() {
-        return this.professores;
-    }
-
-    public void setProfessores(ArrayList professores) {
-        this.professores = professores;
-    }
-
-    public ArrayList getAlunos() {
-        return this.alunos;
-    }
-
-    public void setAlunos(ArrayList alunos) {
-        this.alunos = alunos;
-    }
-
-    public ArrayList getTurmas() {
+    public ArrayList<Turma> getTurmas() {
         return this.turmas;
     }
 
-    public void setTurmas(ArrayList turmas) {
+    public void setTurmas(ArrayList<Turma> turmas) {
         this.turmas = turmas;
-    }
-
-    public void addProfessor(Professor professor) {
-        this.professores.add(professor);
-    }
-
-    public void addAluno(Aluno aluno) {
-        this.alunos.add(aluno);
     }
 
     public void addTurma(Turma turma) {
         this.turmas.add(turma);
     }
 
-    public int getQuantidadeAlunos() {
-        return this.alunos.size();
+    public void remTurma(Turma turma) {
+        this.turmas.remove(turma);
     }
 
-    public boolean verificarAlunoPeloNome(String nome) {
-        boolean achou = false;
-        for (Aluno aluno : this.alunos) {
-            if (aluno.getNome().equals(nome)) {
-                achou = true;
-            }
-        }
-        return achou;
+    public boolean verificarTurma(Turma turma) {
+        return this.turmas.contains(turma);
+    }
+
+    public ArrayList<Aluno> getAlunos() {
+        return this.alunos;
+    }
+
+    public void setAlunos(ArrayList<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
+    public void addAluno(Aluno aluno) {
+        this.alunos.add(aluno);
+    }
+
+    public void remAluno(Aluno aluno) {
+        this.alunos.remove(aluno);
     }
 
     public boolean verificarAluno(Aluno aluno) {
         return this.alunos.contains(aluno);
     }
 
-    public void desalocar(Aluno aluno) {
-        this.alunos.remove(aluno);
-    }
-
-    public ArrayList<String> obterNomesAlunos() {
-        ArrayList<String> resultado = new ArrayList<String>();
-        for (Aluno aluno : this.alunos) {
-            resultado.add(aluno.getNome());
-        }
-        return resultado;
-    }
-
-    public boolean verificarListaAlunos(ArrayList<String> lista) {
-        int contador = 0;
-        for (String nome : lista) {
-            if (this.verificarAlunoPeloNome(nome)) {
-                contador += 1;
+    public ArrayList<String> retornarNomesAlunosTurmasCurso() {
+        ArrayList<String> nomes = new ArrayList<>();
+        for (Turma turma : turmas) {
+            for (Aluno aluno : turma.getAlunos()) {
+                nomes.add(aluno.getNome());
             }
         }
-        return (contador == this.alunos.size());
+        return nomes;
     }
 
-    public void alocarUmAluno(Aluno aluno)
-    {
-        if (!this.alunos.contains(aluno)) {
-            this.alunos.add(aluno);
+    public ArrayList<String> retornarNomesProfessoresTurmasCurso() {
+        ArrayList<String> nomes = new ArrayList<String>();
+        for (Turma turma : this.getTurmas()) {
+            nomes.add(turma.getProfessor().getNome());
         }
+        return nomes;
     }
 
-    public String obterNomesProfessoresTurmaCurso() {
-        return getTurmas().getProfessores().getNome();
+    public ArrayList<String> retornarNomesAlunosRegistradosCurso() {
+        ArrayList<String> nomes = new ArrayList<String>();
+        for (Aluno aluno : alunos) {
+            nomes.add(aluno.getNome());
+        }
+        return nomes;
     }
+
+    public ArrayList<String> retornarNomesDisciplinasTurmasCurso() {
+        ArrayList<String> disciplinas = new ArrayList<String>();
+        for (Turma turma : turmas) {
+            disciplinas.add(turma.getDisciplina().getNome());
+        }
+        return disciplinas;
+    }
+
 }

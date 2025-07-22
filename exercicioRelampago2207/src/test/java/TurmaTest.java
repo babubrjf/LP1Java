@@ -10,9 +10,9 @@ class TurmaTest {
     void deveRetornarNomeProfessorTurma() {
         Turma turma = new Turma();
         Professor professor = new Professor();
-        professor.setNome("Marco");
+        professor.setNome("Marco Antônio");
         turma.setProfessor(professor);
-        assertEquals("Marco", turma.getNomeProfessorTurma());
+        assertEquals("Marco Antônio", turma.retornarNomeProfessorTurma());
     }
 
     @Test
@@ -28,17 +28,38 @@ class TurmaTest {
         Aluno aluno5 = new Aluno();
         aluno5.setNome("Carlos");
         Turma turma = new Turma();
-        turma.addAlunoTurma(aluno1);
-        turma.addAlunoTurma(aluno2);
-        turma.addAlunoTurma(aluno3);
-        turma.addAlunoTurma(aluno4);
-        turma.addAlunoTurma(aluno5);
+        turma.addAluno(aluno1);
+        turma.addAluno(aluno2);
+        turma.addAluno(aluno3);
+        turma.addAluno(aluno4);
+        turma.addAluno(aluno5);
         ArrayList<String> lista = new ArrayList<String>();
         lista.add("Joao");
         lista.add("Pablo");
         lista.add("Pedro");
         lista.add("Luiz");
         lista.add("Carlos");
-        assertEquals(lista, turma.obterNomesAlunos());
+        assertEquals(lista, turma.retornarNomesAlunosTurma());
+    }
+
+    @Test
+    void deveVerificarAlunoTurma () {
+        Aluno aluno1 = new Aluno();
+        Aluno aluno2 = new Aluno();
+        Turma turma = new Turma();
+        turma.addAluno(aluno1);
+        turma.addAluno(aluno2);
+        assertTrue(turma.verificarAluno(aluno2));
+    }
+
+    @Test
+    void deveRemoverAlunoTurma () {
+        Aluno aluno1 = new Aluno();
+        Aluno aluno2 = new Aluno();
+        Turma turma = new Turma();
+        turma.addAluno(aluno1);
+        turma.addAluno(aluno2);
+        turma.remAluno(aluno2);
+        assertFalse(turma.verificarAluno(aluno2));
     }
 }
