@@ -4,219 +4,170 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PessoaTest {
 
+	private void mostrarImc(Pessoa pessoa) {
+		double imc = pessoa.getPeso() / (pessoa.getAltura() * pessoa.getAltura());
+		System.out.printf("IMC: %.2f%n", imc);
+	}
+
+	// mulher
 	@Test
-	void deveRetornarAbaixoDoPesoMulherImc1909() {
+	void deveRetornarAbaixoDoPesoMulher() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(19.09);
+		pessoa.setPeso(58.4);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("abaixo do peso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarPesoNormalMulherImc1910() {
+	void deveRetornarPesoNormalMulherMin() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(19.10);
+		pessoa.setPeso(58.5);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("no peso normal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarPesoNormalMulherImc1911() {
+	void deveRetornarPesoNormalMulherMax() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(19.11);
+		pessoa.setPeso(78.9);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("no peso normal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarPesoNormalMulherImc2579() {
+	void deveRetornarAcimaDoPesoMarginalMulherMin() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(25.79);
+		pessoa.setPeso(79.1);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
-		assertEquals("no peso normal", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarMarginalmenteAcimaDoPesoMulherImc2580() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(25.80);
-		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("marginalmente acima do peso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarMarginalmenteAcimaDoPesoMulherImc2581() {
+	void deveRetornarAcimaDoPesoMarginalMulherMax() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(25.81);
+		pessoa.setPeso(79.7);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.71);
 		assertEquals("marginalmente acima do peso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarMarginalmenteAcimaDoPesoMulherImc2729() {
+	void deveRetornarAcimaDoPesoIdealMulherMin() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(27.29);
+		pessoa.setPeso(80.9);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
-		assertEquals("marginalmente acima do peso", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarAcimaDoPesoIdealMulherImc2730() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(27.30);
-		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.72);
 		assertEquals("acima do peso ideal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarAcimaDoPesoIdealMulherImc2731() {
+	void deveRetornarAcimaDoPesoIdealMulherMax() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(27.31);
+		pessoa.setPeso(95.5);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.72);
 		assertEquals("acima do peso ideal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarAcimaDoPesoIdealMulherImc3229() {
+	void deveRetornarObesoMulher() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(32.29);
+		pessoa.setPeso(95.6);
 		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
-		assertEquals("acima do peso ideal", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarObesoMulherImc3230() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(32.30);
-		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.72);
 		assertEquals("Obeso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
+	// homem
 	@Test
-	void deveRetornarObesoMulherImc3231() {
+	void deveRetornarAbaixoDoPesoHomem() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(32.31);
-		pessoa.setSexo("F");
-		pessoa.setAltura(1.0);
-		assertEquals("Obeso", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarAbaixoDoPesoHomemImc2069() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(20.69);
+		pessoa.setPeso(63.3);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("abaixo do peso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarPesoNormalHomemImc2070() {
+	void deveRetornarPesoNormalHomemMin() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(20.70);
+		pessoa.setPeso(63.5);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("no peso normal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarPesoNormalHomemImc2071() {
+	void deveRetornarPesoNormalHomemMax() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(20.71);
+		pessoa.setPeso(80.8);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("no peso normal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarPesoNormalHomemImc2639() {
+	void deveRetornarAcimaDoPesoMarginalHomemMin() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(26.39);
+		pessoa.setPeso(80.9);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
-		assertEquals("no peso normal", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarMarginalmenteAcimaDoPesoHomemImc2640() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(26.40);
-		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("marginalmente acima do peso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarMarginalmenteAcimaDoPesoHomemImc2641() {
+	void deveRetornarAcimaDoPesoMarginalHomemMax() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(26.41);
+		pessoa.setPeso(85.1);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("marginalmente acima do peso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarMarginalmenteAcimaDoPesoHomemImc2779() {
+	void deveRetornarAcimaDoPesoIdealHomemMin() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(27.79);
+		pessoa.setPeso(85.2);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
-		assertEquals("marginalmente acima do peso", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarAcimaDoPesoIdealHomemImc2780() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(27.80);
-		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("acima do peso ideal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarAcimaDoPesoIdealHomemImc2781() {
+	void deveRetornarAcimaDoPesoIdealHomemMax() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(27.81);
+		pessoa.setPeso(95.2);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("acima do peso ideal", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 
 	@Test
-	void deveRetornarAcimaDoPesoIdealHomemImc3109() {
+	void deveRetornarObesoHomem() {
 		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(31.09);
+		pessoa.setPeso(95.3);
 		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
-		assertEquals("acima do peso ideal", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarObesoHomemImc3110() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(31.10);
-		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
+		pessoa.setAltura(1.75);
 		assertEquals("Obeso", pessoa.calcularImc());
-	}
-
-	@Test
-	void deveRetornarObesoHomemImc3111() {
-		Pessoa pessoa = new Pessoa();
-		pessoa.setPeso(31.11);
-		pessoa.setSexo("M");
-		pessoa.setAltura(1.0);
-		assertEquals("Obeso", pessoa.calcularImc());
+		mostrarImc(pessoa);
 	}
 }

@@ -1,7 +1,7 @@
 public class Pessoa {
 
-	private static final String SEXO_FEMININO = "F";
-	private static final String SEXO_MASCULINO = "M";
+	private static final String SEX_FEM = "F";
+	private static final String SEX_MASC = "M";
 
 	private double peso;
 	private String sexo;
@@ -37,8 +37,8 @@ public class Pessoa {
 		}
 
 		String sexoNormalizado = sexo.trim().toUpperCase();
-		if (!SEXO_FEMININO.equals(sexoNormalizado)
-				&& !SEXO_MASCULINO.equals(sexoNormalizado)) {
+		if (!SEX_FEM.equals(sexoNormalizado)
+				&& !SEX_MASC.equals(sexoNormalizado)) {
 			throw new IllegalArgumentException("Sexo deve ser F ou M");
 		}
 		this.sexo = sexoNormalizado;
@@ -62,7 +62,7 @@ public class Pessoa {
 
 		double imc = peso / (altura * altura);
 
-		if (SEXO_FEMININO.equals(sexo)) {
+		if (SEX_FEM.equals(sexo)) {
 			if (imc < 19.1) {
 				return "abaixo do peso";
 			}
