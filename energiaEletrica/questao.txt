@@ -1,6 +1,9 @@
 Cálculo de faixa tarifária de energia elétrica
 
-Uma distribuidora de energia elétrica classifica a fatura mensal de um cliente de acordo com o tipo de cliente (residencial ou comercial) e o consumo registrado no mês, em kWh. Construa um algoritmo que, a partir do tipo de cliente e do consumo, determine a faixa tarifária aplicada, segundo a tabela
+Uma distribuidora de energia elétrica classifica a fatura mensal de um cliente de acordo
+com o tipo de cliente (residencial ou comercial) e o consumo registrado no mês, em kWh.
+
+Construa um algoritmo que, a partir do tipo de cliente e do consumo, determine a faixa tarifária aplicada, segundo a tabela
 
 1) Construa o algoritmo para este problema: em Java, implemente uma única classe chamada Fatura. Os atributos são consumoKwh e tipoCliente. 
 Além dos métodos get/set e construtor (opcional), um único método chamado calcularTarifa() deve ser construído.
