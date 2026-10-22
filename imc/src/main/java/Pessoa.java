@@ -1,7 +1,8 @@
-public class Pessoa {
+public class Pessoa implements DadosPessoa {
 
 	private static final String SEX_FEM = "F";
 	private static final String SEX_MASC = "M";
+	private static final CalculadoraImc CALCULADORA_IMC = new CalculadoraImc();
 
 	private double peso;
 	private String sexo;
@@ -56,40 +57,6 @@ public class Pessoa {
 	}
 
 	public String calcularImc() {
-		if (peso <= 0 || altura <= 0 || sexo == null) {
-			throw new IllegalStateException("Peso, sexo e altura devem ser informados");
-		}
-
-		double imc = peso / (altura * altura);
-
-		if (SEX_FEM.equals(sexo)) {
-			if (imc < 19.1) {
-				return "abaixo do peso";
-			}
-			if (imc < 25.8) {
-				return "no peso normal";
-			}
-			if (imc < 27.3) {
-				return "marginalmente acima do peso";
-			}
-			if (imc < 32.3) {
-				return "acima do peso ideal";
-			}
-			return "Obeso";
-		}
-
-		if (imc < 20.7) {
-			return "abaixo do peso";
-		}
-		if (imc < 26.4) {
-			return "no peso normal";
-		}
-		if (imc < 27.8) {
-			return "marginalmente acima do peso";
-		}
-		if (imc < 31.1) {
-			return "acima do peso ideal";
-		}
-		return "Obeso";
+		return CALCULADORA_IMC.classificar(this);
 	}
 }
