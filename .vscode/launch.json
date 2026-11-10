@@ -1,0 +1,13 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "java",
+			"name": "IMC API (JDK 17)",
+			"request": "launch",
+			"mainClass": "com.example.imc.ImcApplication",
+			"cwd": "${workspaceFolder}/imc",
+			"javaExec": "C:\\Users\\PBL\\.jdks\\ms-17.0.15\\bin\\java.exe"
+		}
+	]
+}

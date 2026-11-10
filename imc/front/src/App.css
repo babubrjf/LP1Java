@@ -1,0 +1,45 @@
+.app-content {
+  max-width: 760px;
+  padding-top: 100px;
+  padding-bottom: 48px;
+}
+
+.imc-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.form-actions .btn {
+  min-width: 180px;
+}
+
+.result-value {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.result-label {
+  color: var(--bs-secondary-color, #6c757d);
+  margin-bottom: 0;
+}
+
+@media (max-width: 575.98px) {
+  .app-content {
+    padding-top: 88px;
+  }
+
+  .card-header {
+    font-size: 1.25rem;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}

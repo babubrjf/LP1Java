@@ -1,0 +1,3 @@
+DomainConfig registra `CalculadoraImc` como bean Spring para permitir injetá-la no ImcService.java sem colocar `@Component` na classe de domínio.
+
+Assim, CalculadoraImc.java permanece Java puro, sem dependência do Spring, facilitando testes e reutilização.

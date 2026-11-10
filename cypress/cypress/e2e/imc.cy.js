@@ -8,6 +8,6 @@ describe('template spec', () => {
     cy.get('#sexo').select('M');
     cy.get('#root button.btn').click();
     cy.get('.result-label')
-	cy.get('.result-label').should('have.text', 'acima do peso ideal')
+    	cy.get('.result-label').should('have.text', 'Acima do peso ideal')
   })
 })

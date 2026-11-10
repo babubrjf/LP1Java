@@ -1,0 +1,13 @@
+{
+	"java.configuration.runtimes": [
+		{
+			"name": "JavaSE-17",
+			"path": "C:\\Users\\PBL\\.jdks\\ms-17.0.15",
+			"default": true
+		}
+	],
+	"java.configuration.updateBuildConfiguration": "automatic",
+	"java.import.maven.enabled": true,
+	"maven.executable.preferMavenWrapper": true,
+	"maven.terminal.useJavaHome": true
+}
