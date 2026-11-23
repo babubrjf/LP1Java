@@ -7,7 +7,15 @@
 		"test": "jest",
 		"cobertura": "jest --coverage",
 		"mutacao": "stryker run",
-		"mutacao.log": "stryker run --logLevel trace"
+		"mutacao.log": "stryker run --logLevel trace",
+		"start:k6-server": "node k6/server.js",
+		"test:k6:smoke": "k6 run k6/smoke.js",
+		"test:k6:load": "set \"K6_WEB_DASHBOARD=true\" && set \"K6_WEB_DASHBOARD_EXPORT=k6/report.html\" && k6 run k6/load.js"
+	},
+	"jest": {
+		"coveragePathIgnorePatterns": [
+			"/k6/"
+		]
 	},
 	"keywords": [],
 	"author": "",
