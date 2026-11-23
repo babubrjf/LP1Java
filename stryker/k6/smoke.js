@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check } from 'k6';
+import { check, sleep } from 'k6';
 
 const BASE_URL = (__ENV.BASE_URL || 'http://localhost:3000').replace(/\/+$/, '');
 const payload = JSON.stringify({
@@ -31,4 +31,6 @@ export default function () {
 		'POST /desconto retorna 200': (response) => response.status === 200,
 		'POST /desconto calcula 5%': (response) => response.json('desconto') === 5,
 	});
+
+	sleep(1);
 }

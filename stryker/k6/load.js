@@ -2,11 +2,24 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 const BASE_URL = (__ENV.BASE_URL || 'http://localhost:3000').replace(/\/+$/, '');
-const payload = JSON.stringify({
-	primeiraCompra: false,
-	tipoCliente: 'bronze',
-	valorCompra: 300,
-});
+const cenarios = [
+	{
+		payload: { primeiraCompra: false, tipoCliente: 'bronze', valorCompra: 300 },
+		esperado: 5,
+	},
+	{
+		payload: { primeiraCompra: true, tipoCliente: 'bronze', valorCompra: 350 },
+		esperado: 10,
+	},
+	{
+		payload: { primeiraCompra: false, tipoCliente: 'ouro', valorCompra: 100 },
+		esperado: 15,
+	},
+	{
+		payload: { primeiraCompra: false, tipoCliente: 'n/a', valorCompra: 150 },
+		esperado: 0,
+	},
+];
 
 export const options = {
 	stages: [
@@ -21,13 +34,15 @@ export const options = {
 };
 
 export default function () {
-	const response = http.post(`${BASE_URL}/desconto`, payload, {
+	const cenario = cenarios[__ITER % cenarios.length];
+	const response = http.post(`${BASE_URL}/desconto`, JSON.stringify(cenario.payload), {
 		headers: { 'Content-Type': 'application/json' },
 	});
 
 	check(response, {
 		'POST /desconto retorna 200': (result) => result.status === 200,
-		'POST /desconto calcula 5%': (result) => result.json('desconto') === 5,
+		'POST /desconto calcula o valor esperado': (result) =>
+			result.json('desconto') === cenario.esperado,
 	});
 
 	sleep(1);

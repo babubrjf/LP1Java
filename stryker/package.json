@@ -10,7 +10,7 @@
 		"mutacao.log": "stryker run --logLevel trace",
 		"start:k6-server": "node k6/server.js",
 		"test:k6:smoke": "k6 run k6/smoke.js",
-		"test:k6:load": "set \"K6_WEB_DASHBOARD=true\" && set \"K6_WEB_DASHBOARD_EXPORT=k6/report.html\" && k6 run k6/load.js"
+		"test:k6:load": "node -e \"const { spawnSync } = require('node:child_process'); const r = spawnSync('k6', ['run', 'k6/load.js'], { stdio: 'inherit', env: { ...process.env, K6_WEB_DASHBOARD: 'true', K6_WEB_DASHBOARD_EXPORT: 'k6/report.html' } }); process.exit(r.status ?? 1);\""
 	},
 	"jest": {
 		"coveragePathIgnorePatterns": [
