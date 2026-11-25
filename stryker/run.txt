@@ -1,3 +1,13 @@
+STRYKER:
+
 npm i
 npm run test
 npx stryker run
+
+GRAFANA:
+
+npm run test
+npm run mutacao (confirmar 100% dos testes passando e score inalterado)
+
+Terminal 1: `npm run start:k6-server`.
+Terminal 2: `npm run test:k6:smoke` e depois `npm run test:k6:load` (conferir se `k6/report.html` foi gerado e se todos os `checks` e `thresholds` passaram)
